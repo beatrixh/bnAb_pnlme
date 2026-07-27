@@ -1,0 +1,199 @@
+<DATAFILE>
+
+[FILEINFO]
+file={path='C:/Users/bhaddock/repos/well_tagged_2026_06_12/atlas_data_with_plate_locs_subset_full_plates_2026-06-14.csv'}
+delimiter = comma
+header={run_id, run_name, id_unique, plate_row, plate_col, rlu, min_diff, specrole, run, virus_name, virus_id, concentration, monolix_id, rlu_max, rlu_min, rlu_norm, virus_col, mab, mablot, mab_virus, goes_down, virus_cc}
+
+[CONTENT]
+run_id = {use=covariate, type=categorical}
+plate_row = {use=regressor}
+plate_col = {use=regressor}
+concentration = {use=time}
+monolix_id = {use=identifier}
+rlu_norm = {use=observation, type=continuous}
+mab_virus = {use=covariate, type=categorical}
+goes_down = {use=covariate, type=categorical}
+virus_cc = {use=regressor}
+
+<MODEL>
+
+[COVARIATE]
+input = {goes_down, mab_virus, run_id}
+
+goes_down = {type=categorical, categories={'False', 'True'}}
+mab_virus = {type=categorical, categories={'Clinical VRC01|PVO.4', 'PGDM1400 + VRC07-523LS|1176', 'PGDM1400 + VRC07-523LS|1798', 'PGDM1400 + VRC07-523LS|2944', 'PGDM1400 + VRC07-523LS|2946', 'PGDM1400 + VRC07-523LS|3430', 'PGDM1400 + VRC07-523LS|4166', 'PGDM1400 + VRC07-523LS|4168', 'PGDM1400 + VRC07-523LS|Ce1176_A3', 'PGDM1400 + VRC07-523LS|PVO.4', 'PGDM1400 + VRC07-523LS|RHPA4259.7', 'PGDM1400 + VRC07-523LS|TRO.11', 'PGDM1400|1176', 'PGDM1400|1798', 'PGDM1400|2944', 'PGDM1400|2946', 'PGDM1400|3430', 'PGDM1400|4166', 'PGDM1400|4168', 'PGDM1400|Ce1176_A3', 'PGDM1400|PVO.4', 'PGDM1400|RHPA4259.7', 'PGDM1400|TRO.11', 'PGT121 + VRC07-523LS|1176', 'PGT121 + VRC07-523LS|1798', 'PGT121 + VRC07-523LS|2944', 'PGT121 + VRC07-523LS|2946', 'PGT121 + VRC07-523LS|3430', 'PGT121 + VRC07-523LS|4166', 'PGT121 + VRC07-523LS|4168', 'PGT121 + VRC07-523LS|Ce1176_A3', 'PGT121 + VRC07-523LS|PVO.4', 'PGT121 + VRC07-523LS|RHPA4259.7', 'PGT121 + VRC07-523LS|TRO.11', 'PGT121|1176', 'PGT121|1798', 'PGT121|2944', 'PGT121|2946', 'PGT121|3430', 'PGT121|4166', 'PGT121|4168', 'PGT121|Ce1176_A3', 'PGT121|PVO.4', 'PGT121|RHPA4259.7', 'PGT121|TRO.11', 'VRC07-523LS|1176', 'VRC07-523LS|1798', 'VRC07-523LS|2944', 'VRC07-523LS|2946', 'VRC07-523LS|3430', 'VRC07-523LS|4166', 'VRC07-523LS|4168', 'VRC07-523LS|Ce1176_A3', 'VRC07-523LS|PVO.4', 'VRC07-523LS|RHPA4259.7', 'VRC07-523LS|TRO.11', 'nan|1176', 'nan|1798', 'nan|2944', 'nan|2946', 'nan|3430', 'nan|4166', 'nan|4168', 'nan|Ce1176_A3', 'nan|PVO.4', 'nan|RHPA4259.7', 'nan|TRO.11'}}
+run_id = {type=categorical, categories={'1200432', '1313842', '1313860', '1313884', '1313920', '1313938', '1313956', '1313974', '1313992', '1314016', '1314040', '1314058', '1342240', '1342258', '1342276', '1342294', '1342312', '1342336', '1342348', '1342372', '1342384', '1342396', '1342408'}}
+
+[INDIVIDUAL]
+input = {L_pop, omega_L, U_pop, alpha_pop, e_pop, k_pop, m_pop, goes_down, beta_L_goes_down_True, beta_e_goes_down_True, beta_m_goes_down_True, mab_virus, beta_m_mab_virus_PGDM1400___VRC07_523LS_1176, beta_m_mab_virus_PGDM1400___VRC07_523LS_1798, beta_m_mab_virus_PGDM1400___VRC07_523LS_2944, beta_m_mab_virus_PGDM1400___VRC07_523LS_2946, beta_m_mab_virus_PGDM1400___VRC07_523LS_3430, beta_m_mab_virus_PGDM1400___VRC07_523LS_4166, beta_m_mab_virus_PGDM1400___VRC07_523LS_4168, beta_m_mab_virus_PGDM1400___VRC07_523LS_Ce1176_A3, beta_m_mab_virus_PGDM1400___VRC07_523LS_PVO_4, beta_m_mab_virus_PGDM1400___VRC07_523LS_RHPA4259_7, beta_m_mab_virus_PGDM1400___VRC07_523LS_TRO_11, beta_m_mab_virus_PGDM1400_1176, beta_m_mab_virus_PGDM1400_1798, beta_m_mab_virus_PGDM1400_2944, beta_m_mab_virus_PGDM1400_2946, beta_m_mab_virus_PGDM1400_3430, beta_m_mab_virus_PGDM1400_4166, beta_m_mab_virus_PGDM1400_4168, beta_m_mab_virus_PGDM1400_Ce1176_A3, beta_m_mab_virus_PGDM1400_PVO_4, beta_m_mab_virus_PGDM1400_RHPA4259_7, beta_m_mab_virus_PGDM1400_TRO_11, beta_m_mab_virus_PGT121___VRC07_523LS_1176, beta_m_mab_virus_PGT121___VRC07_523LS_1798, beta_m_mab_virus_PGT121___VRC07_523LS_2944, beta_m_mab_virus_PGT121___VRC07_523LS_2946, beta_m_mab_virus_PGT121___VRC07_523LS_3430, beta_m_mab_virus_PGT121___VRC07_523LS_4166, beta_m_mab_virus_PGT121___VRC07_523LS_4168, beta_m_mab_virus_PGT121___VRC07_523LS_Ce1176_A3, beta_m_mab_virus_PGT121___VRC07_523LS_PVO_4, beta_m_mab_virus_PGT121___VRC07_523LS_RHPA4259_7, beta_m_mab_virus_PGT121___VRC07_523LS_TRO_11, beta_m_mab_virus_PGT121_1176, beta_m_mab_virus_PGT121_1798, beta_m_mab_virus_PGT121_2944, beta_m_mab_virus_PGT121_2946, beta_m_mab_virus_PGT121_3430, beta_m_mab_virus_PGT121_4166, beta_m_mab_virus_PGT121_4168, beta_m_mab_virus_PGT121_Ce1176_A3, beta_m_mab_virus_PGT121_PVO_4, beta_m_mab_virus_PGT121_RHPA4259_7, beta_m_mab_virus_PGT121_TRO_11, beta_m_mab_virus_VRC07_523LS_1176, beta_m_mab_virus_VRC07_523LS_1798, beta_m_mab_virus_VRC07_523LS_2944, beta_m_mab_virus_VRC07_523LS_2946, beta_m_mab_virus_VRC07_523LS_3430, beta_m_mab_virus_VRC07_523LS_4166, beta_m_mab_virus_VRC07_523LS_4168, beta_m_mab_virus_VRC07_523LS_Ce1176_A3, beta_m_mab_virus_VRC07_523LS_PVO_4, beta_m_mab_virus_VRC07_523LS_RHPA4259_7, beta_m_mab_virus_VRC07_523LS_TRO_11, beta_m_mab_virus_nan_1176, beta_m_mab_virus_nan_1798, beta_m_mab_virus_nan_2944, beta_m_mab_virus_nan_2946, beta_m_mab_virus_nan_3430, beta_m_mab_virus_nan_4166, beta_m_mab_virus_nan_4168, beta_m_mab_virus_nan_Ce1176_A3, beta_m_mab_virus_nan_PVO_4, beta_m_mab_virus_nan_RHPA4259_7, beta_m_mab_virus_nan_TRO_11, run_id, beta_alpha_run_id_1313842, beta_alpha_run_id_1313860, beta_alpha_run_id_1313884, beta_alpha_run_id_1313920, beta_alpha_run_id_1313938, beta_alpha_run_id_1313956, beta_alpha_run_id_1313974, beta_alpha_run_id_1313992, beta_alpha_run_id_1314016, beta_alpha_run_id_1314040, beta_alpha_run_id_1314058, beta_alpha_run_id_1342240, beta_alpha_run_id_1342258, beta_alpha_run_id_1342276, beta_alpha_run_id_1342294, beta_alpha_run_id_1342312, beta_alpha_run_id_1342336, beta_alpha_run_id_1342348, beta_alpha_run_id_1342372, beta_alpha_run_id_1342384, beta_alpha_run_id_1342396, beta_alpha_run_id_1342408, beta_k_run_id_1313842, beta_k_run_id_1313860, beta_k_run_id_1313884, beta_k_run_id_1313920, beta_k_run_id_1313938, beta_k_run_id_1313956, beta_k_run_id_1313974, beta_k_run_id_1313992, beta_k_run_id_1314016, beta_k_run_id_1314040, beta_k_run_id_1314058, beta_k_run_id_1342240, beta_k_run_id_1342258, beta_k_run_id_1342276, beta_k_run_id_1342294, beta_k_run_id_1342312, beta_k_run_id_1342336, beta_k_run_id_1342348, beta_k_run_id_1342372, beta_k_run_id_1342384, beta_k_run_id_1342396, beta_k_run_id_1342408}
+
+goes_down = {type=categorical, categories={'False', 'True'}}
+mab_virus = {type=categorical, categories={'Clinical VRC01|PVO.4', 'PGDM1400 + VRC07-523LS|1176', 'PGDM1400 + VRC07-523LS|1798', 'PGDM1400 + VRC07-523LS|2944', 'PGDM1400 + VRC07-523LS|2946', 'PGDM1400 + VRC07-523LS|3430', 'PGDM1400 + VRC07-523LS|4166', 'PGDM1400 + VRC07-523LS|4168', 'PGDM1400 + VRC07-523LS|Ce1176_A3', 'PGDM1400 + VRC07-523LS|PVO.4', 'PGDM1400 + VRC07-523LS|RHPA4259.7', 'PGDM1400 + VRC07-523LS|TRO.11', 'PGDM1400|1176', 'PGDM1400|1798', 'PGDM1400|2944', 'PGDM1400|2946', 'PGDM1400|3430', 'PGDM1400|4166', 'PGDM1400|4168', 'PGDM1400|Ce1176_A3', 'PGDM1400|PVO.4', 'PGDM1400|RHPA4259.7', 'PGDM1400|TRO.11', 'PGT121 + VRC07-523LS|1176', 'PGT121 + VRC07-523LS|1798', 'PGT121 + VRC07-523LS|2944', 'PGT121 + VRC07-523LS|2946', 'PGT121 + VRC07-523LS|3430', 'PGT121 + VRC07-523LS|4166', 'PGT121 + VRC07-523LS|4168', 'PGT121 + VRC07-523LS|Ce1176_A3', 'PGT121 + VRC07-523LS|PVO.4', 'PGT121 + VRC07-523LS|RHPA4259.7', 'PGT121 + VRC07-523LS|TRO.11', 'PGT121|1176', 'PGT121|1798', 'PGT121|2944', 'PGT121|2946', 'PGT121|3430', 'PGT121|4166', 'PGT121|4168', 'PGT121|Ce1176_A3', 'PGT121|PVO.4', 'PGT121|RHPA4259.7', 'PGT121|TRO.11', 'VRC07-523LS|1176', 'VRC07-523LS|1798', 'VRC07-523LS|2944', 'VRC07-523LS|2946', 'VRC07-523LS|3430', 'VRC07-523LS|4166', 'VRC07-523LS|4168', 'VRC07-523LS|Ce1176_A3', 'VRC07-523LS|PVO.4', 'VRC07-523LS|RHPA4259.7', 'VRC07-523LS|TRO.11', 'nan|1176', 'nan|1798', 'nan|2944', 'nan|2946', 'nan|3430', 'nan|4166', 'nan|4168', 'nan|Ce1176_A3', 'nan|PVO.4', 'nan|RHPA4259.7', 'nan|TRO.11'}}
+run_id = {type=categorical, categories={'1200432', '1313842', '1313860', '1313884', '1313920', '1313938', '1313956', '1313974', '1313992', '1314016', '1314040', '1314058', '1342240', '1342258', '1342276', '1342294', '1342312', '1342336', '1342348', '1342372', '1342384', '1342396', '1342408'}}
+
+DEFINITION:
+L = {distribution=logNormal, typical=L_pop, covariate=goes_down, coefficient={0, beta_L_goes_down_True}, sd=omega_L}
+U = {distribution=logNormal, typical=U_pop, no-variability}
+alpha = {distribution=logNormal, typical=alpha_pop, covariate=run_id, coefficient={0, beta_alpha_run_id_1313842, beta_alpha_run_id_1313860, beta_alpha_run_id_1313884, beta_alpha_run_id_1313920, beta_alpha_run_id_1313938, beta_alpha_run_id_1313956, beta_alpha_run_id_1313974, beta_alpha_run_id_1313992, beta_alpha_run_id_1314016, beta_alpha_run_id_1314040, beta_alpha_run_id_1314058, beta_alpha_run_id_1342240, beta_alpha_run_id_1342258, beta_alpha_run_id_1342276, beta_alpha_run_id_1342294, beta_alpha_run_id_1342312, beta_alpha_run_id_1342336, beta_alpha_run_id_1342348, beta_alpha_run_id_1342372, beta_alpha_run_id_1342384, beta_alpha_run_id_1342396, beta_alpha_run_id_1342408}, no-variability}
+e = {distribution=logNormal, typical=e_pop, covariate=goes_down, coefficient={0, beta_e_goes_down_True}, no-variability}
+k = {distribution=logNormal, typical=k_pop, covariate=run_id, coefficient={0, beta_k_run_id_1313842, beta_k_run_id_1313860, beta_k_run_id_1313884, beta_k_run_id_1313920, beta_k_run_id_1313938, beta_k_run_id_1313956, beta_k_run_id_1313974, beta_k_run_id_1313992, beta_k_run_id_1314016, beta_k_run_id_1314040, beta_k_run_id_1314058, beta_k_run_id_1342240, beta_k_run_id_1342258, beta_k_run_id_1342276, beta_k_run_id_1342294, beta_k_run_id_1342312, beta_k_run_id_1342336, beta_k_run_id_1342348, beta_k_run_id_1342372, beta_k_run_id_1342384, beta_k_run_id_1342396, beta_k_run_id_1342408}, no-variability}
+m = {distribution=logNormal, typical=m_pop, covariate={mab_virus, goes_down}, coefficient={{0, beta_m_mab_virus_PGDM1400___VRC07_523LS_1176, beta_m_mab_virus_PGDM1400___VRC07_523LS_1798, beta_m_mab_virus_PGDM1400___VRC07_523LS_2944, beta_m_mab_virus_PGDM1400___VRC07_523LS_2946, beta_m_mab_virus_PGDM1400___VRC07_523LS_3430, beta_m_mab_virus_PGDM1400___VRC07_523LS_4166, beta_m_mab_virus_PGDM1400___VRC07_523LS_4168, beta_m_mab_virus_PGDM1400___VRC07_523LS_Ce1176_A3, beta_m_mab_virus_PGDM1400___VRC07_523LS_PVO_4, beta_m_mab_virus_PGDM1400___VRC07_523LS_RHPA4259_7, beta_m_mab_virus_PGDM1400___VRC07_523LS_TRO_11, beta_m_mab_virus_PGDM1400_1176, beta_m_mab_virus_PGDM1400_1798, beta_m_mab_virus_PGDM1400_2944, beta_m_mab_virus_PGDM1400_2946, beta_m_mab_virus_PGDM1400_3430, beta_m_mab_virus_PGDM1400_4166, beta_m_mab_virus_PGDM1400_4168, beta_m_mab_virus_PGDM1400_Ce1176_A3, beta_m_mab_virus_PGDM1400_PVO_4, beta_m_mab_virus_PGDM1400_RHPA4259_7, beta_m_mab_virus_PGDM1400_TRO_11, beta_m_mab_virus_PGT121___VRC07_523LS_1176, beta_m_mab_virus_PGT121___VRC07_523LS_1798, beta_m_mab_virus_PGT121___VRC07_523LS_2944, beta_m_mab_virus_PGT121___VRC07_523LS_2946, beta_m_mab_virus_PGT121___VRC07_523LS_3430, beta_m_mab_virus_PGT121___VRC07_523LS_4166, beta_m_mab_virus_PGT121___VRC07_523LS_4168, beta_m_mab_virus_PGT121___VRC07_523LS_Ce1176_A3, beta_m_mab_virus_PGT121___VRC07_523LS_PVO_4, beta_m_mab_virus_PGT121___VRC07_523LS_RHPA4259_7, beta_m_mab_virus_PGT121___VRC07_523LS_TRO_11, beta_m_mab_virus_PGT121_1176, beta_m_mab_virus_PGT121_1798, beta_m_mab_virus_PGT121_2944, beta_m_mab_virus_PGT121_2946, beta_m_mab_virus_PGT121_3430, beta_m_mab_virus_PGT121_4166, beta_m_mab_virus_PGT121_4168, beta_m_mab_virus_PGT121_Ce1176_A3, beta_m_mab_virus_PGT121_PVO_4, beta_m_mab_virus_PGT121_RHPA4259_7, beta_m_mab_virus_PGT121_TRO_11, beta_m_mab_virus_VRC07_523LS_1176, beta_m_mab_virus_VRC07_523LS_1798, beta_m_mab_virus_VRC07_523LS_2944, beta_m_mab_virus_VRC07_523LS_2946, beta_m_mab_virus_VRC07_523LS_3430, beta_m_mab_virus_VRC07_523LS_4166, beta_m_mab_virus_VRC07_523LS_4168, beta_m_mab_virus_VRC07_523LS_Ce1176_A3, beta_m_mab_virus_VRC07_523LS_PVO_4, beta_m_mab_virus_VRC07_523LS_RHPA4259_7, beta_m_mab_virus_VRC07_523LS_TRO_11, beta_m_mab_virus_nan_1176, beta_m_mab_virus_nan_1798, beta_m_mab_virus_nan_2944, beta_m_mab_virus_nan_2946, beta_m_mab_virus_nan_3430, beta_m_mab_virus_nan_4166, beta_m_mab_virus_nan_4168, beta_m_mab_virus_nan_Ce1176_A3, beta_m_mab_virus_nan_PVO_4, beta_m_mab_virus_nan_RHPA4259_7, beta_m_mab_virus_nan_TRO_11}, {0, beta_m_goes_down_True}}, no-variability}
+
+[LONGITUDINAL]
+input = {a, b}
+
+file = 'C:/Users/bhaddock/repos/bnAb_pnlme/run_plate_tagged_models/4PL_edge_effects_2026-06-12.txt'
+
+DEFINITION:
+rlu_norm = {distribution=normal, prediction=f_edge, errorModel=combined1(a, b)}
+
+<FIT>
+data = 'rlu_norm'
+model = rlu_norm
+
+<PARAMETER>
+L_pop = {value=0.00000131, method=MLE}
+omega_L = {value=0.00000001493546, method=MLE}
+beta_L_goes_down_True = {value=-0.05847421, method=MLE}
+U_pop = {value=1, method=FIXED}
+alpha_pop = {value=1.036, method=MLE}
+beta_alpha_run_id_1313842 = {value=0.000009191892, method=MLE}
+beta_alpha_run_id_1313860 = {value=-1.72102, method=MLE}
+beta_alpha_run_id_1313884 = {value=-0.0000000000041788, method=MLE}
+beta_alpha_run_id_1313920 = {value=0.0000000002548356, method=MLE}
+beta_alpha_run_id_1313938 = {value=0.01992492, method=MLE}
+beta_alpha_run_id_1313956 = {value=-0.4196666, method=MLE}
+beta_alpha_run_id_1313974 = {value=-0.0000000000004539, method=MLE}
+beta_alpha_run_id_1313992 = {value=0.0000001208315, method=MLE}
+beta_alpha_run_id_1314016 = {value=0.0000000000000047, method=MLE}
+beta_alpha_run_id_1314040 = {value=0.003058485, method=MLE}
+beta_alpha_run_id_1314058 = {value=2.2471, method=MLE}
+beta_alpha_run_id_1342240 = {value=-0.000000005211728, method=MLE}
+beta_alpha_run_id_1342258 = {value=0.001195734, method=MLE}
+beta_alpha_run_id_1342276 = {value=-0.00005123353, method=MLE}
+beta_alpha_run_id_1342294 = {value=0.00000001813005, method=MLE}
+beta_alpha_run_id_1342312 = {value=0.0003506938, method=MLE}
+beta_alpha_run_id_1342336 = {value=0.0000000001203932, method=MLE}
+beta_alpha_run_id_1342348 = {value=-0.0000436895, method=MLE}
+beta_alpha_run_id_1342372 = {value=0.6251738999999999, method=MLE}
+beta_alpha_run_id_1342384 = {value=-0.1257937, method=MLE}
+beta_alpha_run_id_1342396 = {value=-0.0000002890285, method=MLE}
+beta_alpha_run_id_1342408 = {value=0.0000000009140832, method=MLE}
+e_pop = {value=2.554, method=MLE}
+beta_e_goes_down_True = {value=0, method=MLE}
+k_pop = {value=1.988, method=MLE}
+beta_k_run_id_1313842 = {value=-0.3248739, method=MLE}
+beta_k_run_id_1313860 = {value=0.0001290493, method=MLE}
+beta_k_run_id_1313884 = {value=-0.00006678375, method=MLE}
+beta_k_run_id_1313920 = {value=-0.0000002049572, method=MLE}
+beta_k_run_id_1313938 = {value=1.28659, method=MLE}
+beta_k_run_id_1313956 = {value=-0.8789505, method=MLE}
+beta_k_run_id_1313974 = {value=-0.7801369, method=MLE}
+beta_k_run_id_1313992 = {value=-0.3644864, method=MLE}
+beta_k_run_id_1314016 = {value=0.3198651, method=MLE}
+beta_k_run_id_1314040 = {value=-0.2423928, method=MLE}
+beta_k_run_id_1314058 = {value=0.3436799, method=MLE}
+beta_k_run_id_1342240 = {value=0.0001071879, method=MLE}
+beta_k_run_id_1342258 = {value=2.02956, method=MLE}
+beta_k_run_id_1342276 = {value=-0.2949792, method=MLE}
+beta_k_run_id_1342294 = {value=-0.00002228645, method=MLE}
+beta_k_run_id_1342312 = {value=-0.0000001803247, method=MLE}
+beta_k_run_id_1342336 = {value=0.04869734, method=MLE}
+beta_k_run_id_1342348 = {value=0.3911772, method=MLE}
+beta_k_run_id_1342372 = {value=-0.000000002296535, method=MLE}
+beta_k_run_id_1342384 = {value=0.0000000000171051, method=MLE}
+beta_k_run_id_1342396 = {value=2.46416, method=MLE}
+beta_k_run_id_1342408 = {value=0.5652775, method=MLE}
+m_pop = {value=0.9429999999999999, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_1176 = {value=0.04977696, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_1798 = {value=0.1877052, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_2944 = {value=0.1845035, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_2946 = {value=0.129671, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_3430 = {value=0.2212945, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_4166 = {value=0.2109143, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_4168 = {value=-0.2543786, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_Ce1176_A3 = {value=0.1368336, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_PVO_4 = {value=0.1648427, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_RHPA4259_7 = {value=0.2312947, method=MLE}
+beta_m_mab_virus_PGDM1400___VRC07_523LS_TRO_11 = {value=0.2054993, method=MLE}
+beta_m_mab_virus_PGDM1400_1176 = {value=-0.4664945, method=MLE}
+beta_m_mab_virus_PGDM1400_1798 = {value=-1.04426, method=MLE}
+beta_m_mab_virus_PGDM1400_2944 = {value=0.04843993, method=MLE}
+beta_m_mab_virus_PGDM1400_2946 = {value=-0.594729, method=MLE}
+beta_m_mab_virus_PGDM1400_3430 = {value=-0.07776446, method=MLE}
+beta_m_mab_virus_PGDM1400_4166 = {value=-0.2896822, method=MLE}
+beta_m_mab_virus_PGDM1400_4168 = {value=-0.259089, method=MLE}
+beta_m_mab_virus_PGDM1400_Ce1176_A3 = {value=-1.18613, method=MLE}
+beta_m_mab_virus_PGDM1400_PVO_4 = {value=-0.05885036, method=MLE}
+beta_m_mab_virus_PGDM1400_RHPA4259_7 = {value=-0.01309424, method=MLE}
+beta_m_mab_virus_PGDM1400_TRO_11 = {value=-0.1262615, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_1176 = {value=0.2353248, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_1798 = {value=0.1492263, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_2944 = {value=0.1530567, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_2946 = {value=0.1540242, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_3430 = {value=0.02702188, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_4166 = {value=0.3817534, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_4168 = {value=-0.3913625, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_Ce1176_A3 = {value=0.296087, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_PVO_4 = {value=0.09269948, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_RHPA4259_7 = {value=0.2193766, method=MLE}
+beta_m_mab_virus_PGT121___VRC07_523LS_TRO_11 = {value=0.1072022, method=MLE}
+beta_m_mab_virus_PGT121_1176 = {value=-0.7764692, method=MLE}
+beta_m_mab_virus_PGT121_1798 = {value=0.08527077, method=MLE}
+beta_m_mab_virus_PGT121_2944 = {value=0.2025241, method=MLE}
+beta_m_mab_virus_PGT121_2946 = {value=-0.06141772, method=MLE}
+beta_m_mab_virus_PGT121_3430 = {value=-0.2189457, method=MLE}
+beta_m_mab_virus_PGT121_4166 = {value=0.1262362, method=MLE}
+beta_m_mab_virus_PGT121_4168 = {value=-1.10182, method=MLE}
+beta_m_mab_virus_PGT121_Ce1176_A3 = {value=0.2188575, method=MLE}
+beta_m_mab_virus_PGT121_PVO_4 = {value=-0.02366563, method=MLE}
+beta_m_mab_virus_PGT121_RHPA4259_7 = {value=0.2572739, method=MLE}
+beta_m_mab_virus_PGT121_TRO_11 = {value=0.2381828, method=MLE}
+beta_m_mab_virus_VRC07_523LS_1176 = {value=0.1349675, method=MLE}
+beta_m_mab_virus_VRC07_523LS_1798 = {value=0.2670048, method=MLE}
+beta_m_mab_virus_VRC07_523LS_2944 = {value=0.146424, method=MLE}
+beta_m_mab_virus_VRC07_523LS_2946 = {value=0.145721, method=MLE}
+beta_m_mab_virus_VRC07_523LS_3430 = {value=0.1397619, method=MLE}
+beta_m_mab_virus_VRC07_523LS_4166 = {value=0.1380291, method=MLE}
+beta_m_mab_virus_VRC07_523LS_4168 = {value=-0.2933253, method=MLE}
+beta_m_mab_virus_VRC07_523LS_Ce1176_A3 = {value=0.178255, method=MLE}
+beta_m_mab_virus_VRC07_523LS_PVO_4 = {value=0.09354133, method=MLE}
+beta_m_mab_virus_VRC07_523LS_RHPA4259_7 = {value=0.23343, method=MLE}
+beta_m_mab_virus_VRC07_523LS_TRO_11 = {value=0.2544401, method=MLE}
+beta_m_mab_virus_nan_1176 = {value=0.04986301, method=MLE}
+beta_m_mab_virus_nan_1798 = {value=-0.231449, method=MLE}
+beta_m_mab_virus_nan_2944 = {value=0.2768686, method=MLE}
+beta_m_mab_virus_nan_2946 = {value=-0.4104693, method=MLE}
+beta_m_mab_virus_nan_3430 = {value=0.4443461, method=MLE}
+beta_m_mab_virus_nan_4166 = {value=0.01984066, method=MLE}
+beta_m_mab_virus_nan_4168 = {value=0.2753699, method=MLE}
+beta_m_mab_virus_nan_Ce1176_A3 = {value=-0.3296296, method=MLE}
+beta_m_mab_virus_nan_PVO_4 = {value=0.09325466, method=MLE}
+beta_m_mab_virus_nan_RHPA4259_7 = {value=-0.05701617, method=MLE}
+beta_m_mab_virus_nan_TRO_11 = {value=-0.1098592, method=MLE}
+beta_m_goes_down_True = {value=0.1915606, method=MLE}
+a = {value=0.003061104, method=MLE}
+b = {value=0.09374168, method=MLE}
+c = {value=1, method=FIXED}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(run = false,method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+
+[PLOTS]
+run = true
+plots = {indfits = {selected = true}, parameterdistribution = {selected = true}, obspred = {selected = true}, covariancemodeldiagnosis = {selected = true}, covariatemodeldiagnosis = {selected = true}, vpc = {selected = true}, residualsscatter = {selected = true}, residualsdistribution = {selected = true}, randomeffects = {selected = true}, saemresults = {selected = true}}
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'm38'
+
+POPULATION:
+exploratoryiterations = 2000
+simulatedannealingiterations = 2000
+
