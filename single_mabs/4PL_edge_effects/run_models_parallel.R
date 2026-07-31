@@ -10,7 +10,7 @@ model_files <- list.files(models_dir, pattern = "^4PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^4PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
-model_names <- c('m13','m5','m0','m37','m1','m16','m50','m60')
+model_names <- c('m13','m5','m0')#,'m37','m1','m16','m50','m60')
 
 run_one_model <- function(model_name, models_dir, monolix_path) {
   library(lixoftConnectors)
