@@ -1,14 +1,19 @@
 # server
 install.packages("/usr/local/Lixoft/MonolixSuite2024R1/connectors/lixoftConnectors.tar.gz",
                  repos = NULL, type="source", INSTALL_opts ="--no-multiarch")
+install.packages("ps")
 library(lixoftConnectors)
 initializeLixoftConnectors(software = "monolix", force = T,
                            path = "/usr/local/Lixoft/MonolixSuite2024R1/")
 
+library(dplyr)
+library(ps)
+
+
 model_name <- "m0"
 models_dir <- "model_files/"
 
-run_model_singly <- function(model_name, models_dir, monolix_path) {
+run_model_singly <- function(model_name, models_dir) {
 
   log_path <- file.path(models_dir, paste0(model_name, "_log.txt"))
   log_step <- function(step) {
@@ -21,7 +26,9 @@ run_model_singly <- function(model_name, models_dir, monolix_path) {
   mlxtran_path <- file.path(models_dir, paste0("4PL_edge_effects_", model_name, ".mlxtran"))
   savedir <- file.path(models_dir, model_name)
 
-  if (file.exists(mlxtran_path) && !dir.exists(savedir)) {
+  already_done <- file.exists(file.path(savedir, "_complete.flag"))
+
+  if (file.exists(mlxtran_path) && !already_done) {
     tryCatch({
       loadProject(mlxtran_path)
       log_step(model_name)
@@ -62,24 +69,23 @@ run_model_singly <- function(model_name, models_dir, monolix_path) {
       log_step("finished runConditionalModeEstimation")
       runLogLikelihoodEstimation()
       log_step("finished runLogLikelihoodEstimation")
+      # runStandardErrorEstimation()
+      # log_step("finished runStandardErrorEstimation")
       
       pop <- getEstimatedPopulationParameters()
       ind <- getEstimatedIndividualParameters()
       loglik <- getEstimatedLogLikelihood()
+      # se <- runStandardErrorEstimation()
+
 
       dir.create(savedir, recursive = TRUE)
       saveProject(file.path(savedir, paste0(model_name, "_fitted.mlxtran")))
       log_step("saved project")
       
-      write.csv(pop, file.path(savedir, "pop.csv"), row.names = FALSE)
-      for (nm in names(ind)) {
-        write.csv(ind[[nm]], file.path(savedir, paste0("ind_", nm, ".csv")), row.names = FALSE)
-      }
-      write.csv(data.frame(as.list(unlist(loglik))), file.path(savedir, "loglik.csv"), row.names = FALSE)
       file.create(file.path(savedir, "_complete.flag"))
       log_step("COMPLETE")
     }, error = function(e) {
-      log_step(sprintf("FAILED: %s", conditionMessage(e)))          # <- add
+      log_step(sprintf("FAILED: %s", conditionMessage(e)))
       message(sprintf("[%s] failed: %s", model_name, conditionMessage(e)))
     })
   }
@@ -89,7 +95,7 @@ run_model_singly <- function(model_name, models_dir, monolix_path) {
 
 # Run and time the estimation scenario
 elapsed <- system.time({
-  run_model_singly()
+  run_model_singly(model_name, models_dir)
 })
 
 cat("\n--- Timing ---\n")
