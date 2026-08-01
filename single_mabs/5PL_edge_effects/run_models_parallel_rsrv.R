@@ -16,8 +16,6 @@ model_files <- list.files(models_dir, pattern = "^5PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^5PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
-model_names <- c("m0","m1","m2","m3","m4","m5")
-
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
   initializeLixoftConnectors(software = "monolix", force = T,
@@ -109,7 +107,7 @@ run_one_model <- function(model_name, models_dir) {
   invisible(model_name)
 }
 
-n_workers <- 2
+n_workers <- 3
 cl <- makeCluster(n_workers)
 
 results <- tryCatch(
