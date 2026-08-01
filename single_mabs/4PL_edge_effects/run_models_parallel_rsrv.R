@@ -16,23 +16,6 @@ model_files <- list.files(models_dir, pattern = "^4PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^4PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
-model_names <- c(
-  'm13',
-  'm5',
-  'm12',
-  'm40',
-  'm17',
-  'm4',
-  'm30',
-  'm14',
-  'm15',
-  'm11',
-  'm38',
-  'm39',
-  'm3',
-  'm6',
-  'm2'
- )
 
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
