@@ -16,7 +16,23 @@ model_files <- list.files(models_dir, pattern = "^4PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^4PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
-model_names <- c('m37','m1','m16')
+model_names <- c(
+  'm13',
+  'm5',
+  'm12',
+  'm40',
+  'm17',
+  'm4',
+  'm30',
+  'm14',
+  'm15',
+  'm11',
+  'm38',
+  'm39',
+  'm3',
+  'm6',
+  'm2'
+ )
 
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
@@ -41,6 +57,7 @@ run_one_model <- function(model_name, models_dir) {
   already_done <- file.exists(file.path(savedir, "_complete.flag"))
 
   if (file.exists(mlxtran_path) && !already_done) {
+    start_time <- Sys.time()
     tryCatch({
       loadProject(mlxtran_path)
       log_step(model_name)
@@ -96,9 +113,11 @@ run_one_model <- function(model_name, models_dir) {
       }
       write.csv(data.frame(as.list(unlist(loglik))), file.path(savedir, "loglik.csv"), row.names = FALSE)
       file.create(file.path(savedir, "_complete.flag"))
-      log_step("COMPLETE")
+      elapsed <- round(as.numeric(difftime(Sys.time(), start_time, units = "mins")), 1)
+      log_step(sprintf("COMPLETE (total runtime %.1f min)", elapsed))
     }, error = function(e) {
-      log_step(sprintf("FAILED: %s", conditionMessage(e)))
+      elapsed <- round(as.numeric(difftime(Sys.time(), start_time, units = "mins")), 1)
+      log_step(sprintf("FAILED after %.1f min: %s", elapsed, conditionMessage(e)))
       message(sprintf("[%s] failed: %s", model_name, conditionMessage(e)))
     })
   }
