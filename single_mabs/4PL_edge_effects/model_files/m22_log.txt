@@ -1,0 +1,4 @@
+[2026-07-31 23:57:41] m22 :: 331.0 MB
+[2026-07-31 23:57:41] project loaded :: 331.0 MB
+[2026-07-31 23:57:51] initial values configured :: 332.0 MB
+[2026-07-31 23:57:51] starting runPopulationParameterEstimation :: 332.9 MB
