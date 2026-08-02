@@ -1,0 +1,61 @@
+
+R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> # Installed once here, sequentially, before any workers are spun up --
+> # install.packages() writes to a shared library path, so running it inside
+> # run_one_model() would have every worker try to install concurrently into
+> # the same location, risking a corrupted/partial install.
+> install.packages("/usr/local/Lixoft/MonolixSuite2024R1/connectors/lixoftConnectors.tar.gz",
++                  repos = NULL, type="source", INSTALL_opts ="--no-multiarch")
+Installing package into ‘/home/bhaddock/R/x86_64-pc-linux-gnu-library/4.4’
+(as ‘lib’ is unspecified)
+* installing *source* package ‘lixoftConnectors’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (lixoftConnectors)
+> install.packages("ps")
+Installing package into ‘/home/bhaddock/R/x86_64-pc-linux-gnu-library/4.4’
+(as ‘lib’ is unspecified)
+trying URL 'https://packagemanager.posit.co/cran/__linux__/noble/latest/src/contrib/ps_1.9.3.tar.gz'
+Content type 'binary/octet-stream' length 172933 bytes (168 KB)
+==================================================
+downloaded 168 KB
+
+ERROR: failed to lock directory ‘/home/bhaddock/R/x86_64-pc-linux-gnu-library/4.4’ for modifying
+Try removing ‘/home/bhaddock/R/x86_64-pc-linux-gnu-library/4.4/00LOCK-ps’
+
+The downloaded source packages are in
+	‘/tmp/Rtmpbz5n1m/downloaded_packages’
+Warning message:
+In install.packages("ps") :
+  installation of package ‘ps’ had non-zero exit status
+> 
+> library(lixoftConnectors)
+Error in library(lixoftConnectors) : 
+  there is no package called ‘lixoftConnectors’
+Execution halted
