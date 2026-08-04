@@ -1,0 +1,7 @@
+[2026-08-04 10:52:21] m146 :: 332.7 MB
+[2026-08-04 10:52:21] fitted project loaded :: 332.8 MB
+[2026-08-04 10:53:53] m146 :: 327.1 MB
+[2026-08-04 10:53:53] fitted project loaded :: 327.2 MB
+[2026-08-04 10:53:53] finished runStandardErrorEstimation :: 327.7 MB
+[2026-08-04 10:53:53] wrote se csvs :: 327.8 MB
+[2026-08-04 10:53:53] COMPLETE (total runtime 0.0 min) :: 327.8 MB
