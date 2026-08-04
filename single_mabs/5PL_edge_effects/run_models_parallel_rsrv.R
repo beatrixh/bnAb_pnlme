@@ -16,6 +16,11 @@ model_files <- list.files(models_dir, pattern = "^5PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^5PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
+already_done <- sapply(model_names, function(m) {
+  file.exists(file.path(models_dir, m, "_complete.flag"))
+})
+model_names <- model_names[!already_done]
+
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
   initializeLixoftConnectors(software = "monolix", force = T,
