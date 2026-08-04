@@ -16,6 +16,7 @@ model_files <- list.files(models_dir, pattern = "^4PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^4PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
+model_names <- c("m65", "m66", "m67", "m68", "m69", "m70")
 
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
@@ -108,7 +109,7 @@ run_one_model <- function(model_name, models_dir) {
   invisible(model_name)
 }
 
-n_workers <- 3
+n_workers <- 6
 cl <- makeCluster(n_workers)
 
 results <- tryCatch(
