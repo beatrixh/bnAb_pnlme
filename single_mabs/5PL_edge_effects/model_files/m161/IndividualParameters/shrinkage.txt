@@ -1,0 +1,8 @@
+parameters,shrinkage_mode
+U,nan
+L,99.9979
+m,48.5963
+e,nan
+s,nan
+alpha,nan
+k,nan

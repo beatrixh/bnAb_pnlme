@@ -1,0 +1,9 @@
+[2026-08-03 04:27:17] m89 :: 626.0 MB
+[2026-08-03 04:27:17] project loaded :: 626.0 MB
+[2026-08-03 04:27:28] initial values configured :: 626.0 MB
+[2026-08-03 04:27:28] starting runPopulationParameterEstimation :: 626.0 MB
+[2026-08-03 06:12:29] finished runPopulationParameterEstimation :: 626.0 MB
+[2026-08-03 06:12:29] finished runConditionalModeEstimation :: 626.0 MB
+[2026-08-03 06:12:54] finished runLogLikelihoodEstimation :: 626.0 MB
+[2026-08-03 06:12:55] saved project :: 626.0 MB
+[2026-08-03 06:12:55] COMPLETE (total runtime 105.6 min) :: 626.0 MB
