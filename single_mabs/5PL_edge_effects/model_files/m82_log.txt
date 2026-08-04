@@ -1,0 +1,9 @@
+[2026-08-03 09:31:08] m82 :: 666.5 MB
+[2026-08-03 09:31:08] project loaded :: 666.5 MB
+[2026-08-03 09:31:19] initial values configured :: 666.5 MB
+[2026-08-03 09:31:20] starting runPopulationParameterEstimation :: 666.5 MB
+[2026-08-03 12:46:38] finished runPopulationParameterEstimation :: 666.5 MB
+[2026-08-03 12:46:39] finished runConditionalModeEstimation :: 666.5 MB
+[2026-08-03 12:47:01] finished runLogLikelihoodEstimation :: 667.6 MB
+[2026-08-03 12:47:02] saved project :: 669.0 MB
+[2026-08-03 12:47:02] COMPLETE (total runtime 195.9 min) :: 669.0 MB
