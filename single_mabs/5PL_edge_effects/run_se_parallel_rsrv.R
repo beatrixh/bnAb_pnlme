@@ -13,7 +13,7 @@ library(parallel)
 models_dir <- "/home/bhaddock/repos/bnAb_pnlme/single_mabs/5PL_edge_effects/model_files"
 
 # Fill in whichever already-fitted models you want SEs for.
-model_names <- c('m182', 'm184', 'm160', 'm146', '158', 'm192', 'm188', 'm136', 'm170', 'm181')
+model_names <- c('m182')
 
 to_long_df <- function(x, value_col = "value") {
   if (is.data.frame(x)) return(x)
@@ -89,7 +89,7 @@ already_done <- sapply(model_names, function(m) {
 })
 model_names <- model_names[!already_done]
 
-n_workers <- 7
+n_workers <- 1
 cl <- makeCluster(n_workers)
 
 results <- tryCatch(
