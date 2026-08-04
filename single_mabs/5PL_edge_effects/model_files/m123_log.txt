@@ -1,0 +1,9 @@
+[2026-08-04 01:54:25] m123 :: 618.7 MB
+[2026-08-04 01:54:25] project loaded :: 618.7 MB
+[2026-08-04 01:54:33] initial values configured :: 618.7 MB
+[2026-08-04 01:54:33] starting runPopulationParameterEstimation :: 618.7 MB
+[2026-08-04 03:02:59] finished runPopulationParameterEstimation :: 618.7 MB
+[2026-08-04 03:03:00] finished runConditionalModeEstimation :: 618.7 MB
+[2026-08-04 03:03:30] finished runLogLikelihoodEstimation :: 618.7 MB
+[2026-08-04 03:03:30] saved project :: 618.7 MB
+[2026-08-04 03:03:30] COMPLETE (total runtime 69.1 min) :: 618.7 MB

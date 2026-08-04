@@ -1,0 +1,9 @@
+[2026-08-04 02:55:19] m116 :: 621.0 MB
+[2026-08-04 02:55:19] project loaded :: 621.0 MB
+[2026-08-04 02:55:30] initial values configured :: 621.1 MB
+[2026-08-04 02:55:31] starting runPopulationParameterEstimation :: 621.1 MB
+[2026-08-04 04:57:10] finished runPopulationParameterEstimation :: 621.1 MB
+[2026-08-04 04:57:10] finished runConditionalModeEstimation :: 621.1 MB
+[2026-08-04 04:57:40] finished runLogLikelihoodEstimation :: 621.1 MB
+[2026-08-04 04:57:40] saved project :: 621.1 MB
+[2026-08-04 04:57:40] COMPLETE (total runtime 122.4 min) :: 621.1 MB
