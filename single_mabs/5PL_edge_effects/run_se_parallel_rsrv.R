@@ -89,7 +89,7 @@ already_done <- sapply(model_names, function(m) {
 })
 model_names <- model_names[!already_done]
 
-n_workers <- 3
+n_workers <- 7
 cl <- makeCluster(n_workers)
 
 results <- tryCatch(
