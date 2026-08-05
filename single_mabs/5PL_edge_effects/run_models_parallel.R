@@ -7,7 +7,7 @@ monolix_path <- "C:/Program Files/Lixoft/MonolixSuite2024R1"
 # models_dir <- "C:/Users/bhaddock/repos/automated_run_models"
 models_dir <- "C:/Users/bhaddock/repos/bnAb_pnlme/single_mabs/5PL_edge_effects/model_files"
 
-model_names <- c('m0')
+model_names <- c('m193')
 
 run_one_model <- function(model_name, models_dir, monolix_path) {
   library(lixoftConnectors)
@@ -23,7 +23,7 @@ run_one_model <- function(model_name, models_dir, monolix_path) {
   }
   
   
-  mlxtran_path <- file.path(models_dir, paste0("4PL_edge_effects_", model_name, ".mlxtran"))
+  mlxtran_path <- file.path(models_dir, paste0("5PL_edge_effects_", model_name, ".mlxtran"))
   savedir <- file.path(models_dir, model_name)
 
   if (file.exists(mlxtran_path) && !dir.exists(savedir)) {
@@ -92,7 +92,7 @@ run_one_model <- function(model_name, models_dir, monolix_path) {
   invisible(model_name)
 }
 
-n_workers <- 3
+n_workers <- 1
 cl <- makeCluster(n_workers)
 
 results <- tryCatch(
