@@ -63,7 +63,7 @@ run_one_model <- function(model_name, models_dir) {
       popParams$initialValue[omegaRows] <- 1
 
       popParams <- popParams %>%
-        rows_update(autoInitValues, by = "name")
+        dplyr::rows_update(autoInitValues, by = "name")
       setPopulationParameterInformation(popParams)
 
       defaults <- c(a = 1, b = 0.3, c = 1)
