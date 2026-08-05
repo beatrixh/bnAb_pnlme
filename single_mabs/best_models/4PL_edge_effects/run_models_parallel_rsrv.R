@@ -16,11 +16,6 @@ model_files <- list.files(models_dir, pattern = "^4PL_edge_effects_m[0-9]+\\.mlx
 model_names <- sub("^4PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
 model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
 
-already_done <- sapply(model_names, function(m) {
-  file.exists(file.path(models_dir, m, "_complete.flag"))
-})
-model_names <- model_names[!already_done]
-
 model_names <- c("m1")
 
 run_one_model <- function(model_name, models_dir) {
@@ -31,15 +26,15 @@ run_one_model <- function(model_name, models_dir) {
   library(dplyr)
   library(ps)
 
-
+  
   log_path <- file.path(models_dir, paste0(model_name, "_log.txt"))
   log_step <- function(step) {
     mem_mb <- round(as.numeric(ps::ps_memory_info(ps::ps_handle())["rss"]) / 1024^2, 1)
     cat(sprintf("[%s] %s :: %.1f MB\n", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), step, mem_mb),
         file = log_path, append = TRUE)
   }
-
-
+  
+  
   mlxtran_path <- file.path(models_dir, paste0("4PL_edge_effects_", model_name, ".mlxtran"))
   savedir <- file.path(models_dir, model_name)
 
@@ -65,7 +60,7 @@ run_one_model <- function(model_name, models_dir) {
       popParams$initialValue[omegaRows] <- 1
 
       popParams <- popParams %>%
-        dplyr::rows_update(autoInitValues, by = "name")
+        rows_update(autoInitValues, by = "name")
       setPopulationParameterInformation(popParams)
 
       defaults <- c(a = 1, b = 0.3, c = 1)
@@ -87,7 +82,7 @@ run_one_model <- function(model_name, models_dir) {
       log_step("finished runConditionalModeEstimation")
       runLogLikelihoodEstimation()
       log_step("finished runLogLikelihoodEstimation")
-
+      
       pop <- getEstimatedPopulationParameters()
       ind <- getEstimatedIndividualParameters()
       loglik <- getEstimatedLogLikelihood()
@@ -95,7 +90,7 @@ run_one_model <- function(model_name, models_dir) {
       dir.create(savedir, recursive = TRUE)
       saveProject(file.path(savedir, paste0(model_name, "_fitted.mlxtran")))
       log_step("saved project")
-
+      
       write.csv(pop, file.path(savedir, "pop.csv"), row.names = FALSE)
       for (nm in names(ind)) {
         write.csv(ind[[nm]], file.path(savedir, paste0("ind_", nm, ".csv")), row.names = FALSE)
