@@ -59,8 +59,13 @@ run_one_model <- function(model_name, models_dir) {
       omegaRows <- grepl("^omega_", popParams$name)
       popParams$initialValue[omegaRows] <- 1
 
+      autoInitDF <- data.frame(
+        name = names(autoInitValues),
+        initialValue = unlist(autoInitValues, use.names = FALSE),
+        stringsAsFactors = FALSE
+      )
       popParams <- as.data.frame(popParams) %>%
-        dplyr::rows_update(as.data.frame(autoInitValues), by = "name")
+        dplyr::rows_update(autoInitDF, by = "name")
       setPopulationParameterInformation(popParams)
 
       defaults <- c(a = 1, b = 0.3, c = 1)
