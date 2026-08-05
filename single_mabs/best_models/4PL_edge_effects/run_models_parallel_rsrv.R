@@ -21,8 +21,6 @@ already_done <- sapply(model_names, function(m) {
 })
 model_names <- model_names[!already_done]
 
-model_names <- c("m1")
-
 run_one_model <- function(model_name, models_dir) {
   library(lixoftConnectors)
   initializeLixoftConnectors(software = "monolix", force = T,
