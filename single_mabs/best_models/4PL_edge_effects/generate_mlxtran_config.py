@@ -12,7 +12,7 @@ import openpyxl
 # that dataset's actual levels, not the old small-dataset ones). Only the
 # per-model parameter/covariate configs come from the original search run's
 # model_tracker.xlsx, since those didn't change for this rerun.
-BASE_MLXTRAN = Path("/mnt/c/Users/bhaddock/repos/bnAb_pnlme/single_mabs/best_models/4PL_edge_effects/4PL_edge_effects_template.mlxtran")
+BASE_MLXTRAN = Path("/mnt/c/Users/bhaddock/repos/bnAb_pnlme/single_mabs/best_models/4PL_edge_effects/new_template.mlxtran")
 MODEL_TRACKER_XLSX = Path("/mnt/c/Users/bhaddock/repos/bnAb_pnlme/single_mabs/4PL_edge_effects/model_tracker.xlsx")
 OUTPUT_DIR = Path("/mnt/c/Users/bhaddock/repos/bnAb_pnlme/single_mabs/best_models/4PL_edge_effects/model_files")
 
