@@ -13,8 +13,10 @@ library(dplyr)
 
 models_dir <- "/home/bhaddock/repos/bnAb_pnlme/single_mabs/best_models/5PL_edge_effects/model_files"
 model_files <- list.files(models_dir, pattern = "^5PL_edge_effects_m[0-9]+\\.mlxtran$")
-model_names <- sub("^5PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
-model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
+# model_names <- sub("^5PL_edge_effects_(m[0-9]+)\\.mlxtran$", "\\1", model_files)
+# model_names <- model_names[order(as.integer(sub("^m", "", model_names)))]
+
+model_names <- c("m0","m6","m14","m158","m160","m182","m184","m191","m192",)
 
 already_done <- sapply(model_names, function(m) {
   file.exists(file.path(models_dir, m, "_complete.flag"))
